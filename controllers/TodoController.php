@@ -27,7 +27,7 @@ class TodoController extends ActiveController {
 	}
 	
 	public function actionCreate() {
-		echo 'this is custom creatse';
+		echo 'this is custom create action';
 		print_r(Yii::$app->request-post());
 		exit;
 	}
@@ -45,7 +45,7 @@ class TodoController extends ActiveController {
 		Yii::$app->db->createCommand()->upsert... either insert or update if exits
 		*/
 		// update name for record 2
-		 // use excute for non returting query
+		 // use excute for non returning query
 		$remark = 'this remark was set from PHP excute 4th time';
 		// Yii::$app->db->createCommand('UPDATE todo SET remark = "'.$remark.'" WHERE id=2')->execute();
 		// Yii::$app->db->createCommand()->update('todo', ['remark' => $remark, 'status' => 5], 'id = 2 and user = "Nehagupta"')->execute();
