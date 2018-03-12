@@ -53,7 +53,9 @@ $config = [
 				[
 					'class' => 'yii\rest\UrlRule',
 					'controller' => 'Todo'
-				]
+				],
+				// for remove controler name from url
+				'<alias:\w+>' => 'site/<alias>',
             ],
         ],
     ],
