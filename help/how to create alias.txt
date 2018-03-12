@@ -1,0 +1,33 @@
+#1 open "C:\xampp\apache\conf" and add or uncomment this line at end
+   Include "conf/alias/*.conf"
+
+#2 At "C:\xampp\apache\conf" create a folder named "alias"
+
+#3 Inside alias, create a file "YiiRest.conf.conf" or whatever subDomain you are using.
+  paste this code - 
+<Directory "c:\xampp\htdocs\YiiRest\web">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Require all granted
+</Directory>
+
+Alias /dev- "c:\xampp\htdocs\YiiRest\web"
+
+
+#4 open httpd-vhosts.conf (C:\xampp\apache\conf\extra) and add this code at bottom
+<VirtualHost *:80>
+	ServerName yiiRest.com
+	DocumentRoot "c:/xampp/htdocs/YiiRest/web"
+	<Directory "c:/xampp/htdocs/YiiRest/web>
+		allow from all
+		Require all granted 
+	</Directory>
+	DirectoryIndex index.html index.php
+</VirtualHost>
+
+#5 Open Host file (C:\Windows\System32\drivers\etc) and add this line
+
+
+127.0.0.1 yiiRest.com
+
+Restart the Xampp server and boom............
