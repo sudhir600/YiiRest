@@ -50,7 +50,7 @@ class TodoController extends ActiveController {
 		// Yii::$app->db->createCommand('UPDATE todo SET remark = "'.$remark.'" WHERE id=2')->execute();
 		// Yii::$app->db->createCommand()->update('todo', ['remark' => $remark, 'status' => 5], 'id = 2 and user = "Nehagupta"')->execute();
 		Yii::$app->db->createCommand()->update('todo', ['remark' => $remark, 'status' => 5], 'status = 3')->execute();
-		Yii::$app->db->createCommand()->delete('todo', 'id = 6')->execute();
+		// Yii::$app->db->createCommand()->delete('todo', 'id = 6')->execute();
 		$posts = Yii::$app->db->createCommand('SELECT * FROM todo')->queryAll();
 		print_r(json_encode($posts));	
 	}
