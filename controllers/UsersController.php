@@ -11,6 +11,6 @@ class UsersController extends ActiveController
 	public function actionUsers()
     {
         echo 'this is test<pre>';
-		print_r($_SERVER['SERVER_ADDR']);
+		//print_r($_SERVER['SERVER_ADDR']);
     }
 }

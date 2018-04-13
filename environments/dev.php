@@ -1,7 +1,7 @@
 <?php
 return [
 	'host' => 'localhost',
-	'dbName' => 'pos_core',
+	'dbName' => 'test',
     'userName' => 'root',
     'password' => '',
     'charset' => 'utf8'
