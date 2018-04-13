@@ -3,7 +3,7 @@
 
 #2 At "C:\xampp\apache\conf" create a folder named "alias"
 
-#3 Inside alias, create a file "YiiRest.conf.conf" or whatever subDomain you are using.
+#3 Inside alias, create a file "YiiRest.conf" or whatever subDomain you are using.
   paste this code - 
 <Directory "c:\xampp\htdocs\YiiRest\web">
     Options Indexes FollowSymLinks Includes ExecCGI
@@ -15,7 +15,7 @@ Alias /dev- "c:\xampp\htdocs\YiiRest\web"
 
 
 #4 open httpd-vhosts.conf (C:\xampp\apache\conf\extra) and add this code at bottom
-<VirtualHost *:80>
+<VirtualHost yiiRest.com:80>
 	ServerName yiiRest.com
 	DocumentRoot "c:/xampp/htdocs/YiiRest/web"
 	<Directory "c:/xampp/htdocs/YiiRest/web>
