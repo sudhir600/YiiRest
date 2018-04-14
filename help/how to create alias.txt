@@ -1,4 +1,4 @@
-#1 open "C:\xampp\apache\conf" and add or uncomment this line at end
+#1 open "C:\xampp\apache\conf\httpd.conf" and add or uncomment this line at end
    Include "conf/alias/*.conf"
 
 #2 At "C:\xampp\apache\conf" create a folder named "alias"
