@@ -1,5 +1,3 @@
-<h1>1st thing first. run "composer update" before hitting url 1st time.</h1>
-
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
@@ -7,6 +5,8 @@
     <h1 align="center">Yii 2 Basic Project Template</h1>
     <br>
 </p>
+
+<h3>Note - 1st thing first. run <span style="color:red">composer update</span> before hitting url 1st time.</h3>
 
 Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 rapidly creating small projects.
@@ -42,7 +42,7 @@ REQUIREMENTS
 The minimum requirement by this project template that your Web server supports PHP 5.4.0.
 
 
-INSTALLATION
+INSTALLATION[]
 ------------
 
 ### Install via Composer
