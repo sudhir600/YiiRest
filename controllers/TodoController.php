@@ -7,21 +7,36 @@ use yii\base\Model;
 use yii\web\NotFoundHttpException;
 use yii\rest\ActiveController;
 use app\models\Todo;
-use app\common\genUtils;
-// use yii\db\ActiveRecord;
+use yii\web\Controller;
+// use commomSudhir\genUtilsController;
 
-class TodoController extends ActiveController {
+// extends ActiveController
+
+class TodoController extends Controller {
 	
 	public $modelClass = 'app\models\Todo';
-	public $genClass = 'app\common\genUtils';
 
+	public function actionHelper(){
+		echo 'Yii::$app->gHelpers->hello() called - <br />';
+		echo Yii::$app->gHelpers->hello();
+	}
+	public function actionUtility(){
+		echo 'gUtils called - ';
+		echo Yii::$app->gUtils->getDates();
+	}
 	public function actionIndex() {
-		echo '<pre>';
+		echo 'index todo called<br /><br /><br /><br />';
+		echo 'try these urls<br />';
+		echo '<a target="new" href="helper">Helper</a><br />';
+		echo '<a target="new" href="utility">Utility</a><br />';
+	}
+	public function actionSudhir() {
+		//Yii::$app->MyComponent->MyFunction(4,2); 
+		//echo '<pre>';
 		// $aa = Yii::$app;
 		//$bb = genUtils::getDate;
 		//$b = new genUtils;
 		//print_r($aa);
-		print_r($this->genClass);
 		//echo 'to do index called';
 		
 		die();
