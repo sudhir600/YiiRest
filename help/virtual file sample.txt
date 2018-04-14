@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+	ServerName yiiRest.com
+	DocumentRoot "c:/xampp/htdocs/YiiRest/web"
+	<Directory "c:/xampp/htdocs/YiiRest/web>
+		allow from all
+		Require all granted 
+	</Directory>
+	DirectoryIndex index.html index.php
+</VirtualHost>

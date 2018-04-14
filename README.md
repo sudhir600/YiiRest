@@ -1,3 +1,5 @@
+<h1>1st thing first. run "composer update" before hitting url 1st time.</h1>
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
