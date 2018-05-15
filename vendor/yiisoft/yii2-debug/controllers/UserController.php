@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function beforeAction($action)
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         if (!Yii::$app->session->hasSessionId) {
             throw new BadRequestHttpException('Need an active session');
         }

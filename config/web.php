@@ -12,6 +12,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+			'response' => [
+				'format' => \yii\web\Response::FORMAT_JSON
+		],
 		/*
 		'helpers' => [
 			// use this code block if you add a custome folder with php fnc and use it in any controller

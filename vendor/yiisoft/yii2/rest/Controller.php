@@ -52,7 +52,7 @@ class Controller extends \yii\web\Controller
                 'class' => ContentNegotiator::className(),
                 'formats' => [
                     'application/json' => Response::FORMAT_JSON,
-                    'application/xml' => Response::FORMAT_XML,
+                    // 'application/xml' => Response::FORMAT_XML,
                 ],
             ],
             'verbFilter' => [
