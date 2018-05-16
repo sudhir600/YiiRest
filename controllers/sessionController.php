@@ -37,13 +37,14 @@ class SessionController extends ActiveController {
 		echo Yii::$app->gUtils->getDates();
 	}
 	public function actionIndex($params = array()) {
-		// \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-		// echo $_SERVER['REQUEST_METHOD'];
-		echo '<pre>';
 		if($_SERVER['REQUEST_METHOD'] == 'POST'){
+			
 			$error = [];
-			$username =  isset($_POST['username']);
-			$password =  isset($_POST['password']);
+			$username =  isset($_POST['username']) ? $_POST['username'] : null;
+			$password =  isset($_POST['password']) ? md5($_POST['password']) : null;
+			$data = array();
+			$error = array();
+			
 			if($username == null || empty($username)){
 				$error['msg'] = 'username can\'t be empty';
 				$error['code'] = 'e001';
@@ -51,13 +52,24 @@ class SessionController extends ActiveController {
 				$error['msg'] = 'password can\'t be empty';
 				$error['code'] = 'e002';
 			}
-			print_r($_POST);
-			print_r($error);
-			echo '   ';
+			$checkUser = 0;
+			$dbResponce = Yii::$app->db->createCommand('SELECT * FROM users where username = "' . $username . '" and password  ="' . $password . '"')->queryAll();
+			print_r($dbResponce);
+			if(is_array($dbResponce) && count($dbResponce) > 0) {
+				$checkUser = true;
+				//$data  = array('name' => 'sudhir', 'age' =>20, 'location' => 'mumbai');
+			} else {
+				$error = array('code' => 200, 'msg' => 'Bad username / password combination', 'moreInfo'=> 'details infomation is saved in errorlog');
+			}
+			$util = Yii::$app->gUtils->buildJsonResponce($data, $error);
+			// mecho 'db data - ';
+			print_r($util);
+			//print_r($_POST);
+			//print_r($error);
 			// echo $_POST['username'];
 			// echo $_POST['password'];
 		} else{
-			 echo 'Method should be post.';
+			 echo 'Method should be POST.';
 		}
 	}
 		
