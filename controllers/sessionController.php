@@ -53,24 +53,34 @@ class SessionController extends ActiveController {
 				$error['code'] = 'e002';
 			}
 			$checkUser = 0;
-			$dbResponce = Yii::$app->db->createCommand('SELECT * FROM users where username = "' . $username . '" and password  ="' . $password . '"')->queryAll();
+			$dbResponce = Yii::$app->db->createCommand('SELECT * FROM users where username = "' . $username . '" and password  ="' . $password . '"')->queryOne();
 			print_r($dbResponce);
 			if(is_array($dbResponce) && count($dbResponce) > 0) {
 				$checkUser = true;
-				//$data  = array('name' => 'sudhir', 'age' =>20, 'location' => 'mumbai');
+				$userId = $dbResponce['id'];
+				$userName = $dbResponce['username'];
+				$userIp = Yii::$app->gUtils->getIP();
+				$tokenLength = 30;
+				$tokenKey = Yii::$app->gUtils->createToken($userId, $tokenLength);
+				$shareSessionKey = Yii::$app->gUtils->generateShareSessionId($userId);
+				Yii::$app->db->createCommand()->insert('token', [
+																  'user_id' => $userId,
+																  'token_key' => $tokenKey,
+																  'ip_address' => $userIp,
+																  'share_session' => $shareSessionKey
+																]
+													   )->execute();
+				$data =  array('userId'=>$userId, 'userName' => $userName, 'tokenKey'=>$tokenKey);
 			} else {
 				$error = array('code' => 200, 'msg' => 'Bad username / password combination', 'moreInfo'=> 'details infomation is saved in errorlog');
 			}
-			$util = Yii::$app->gUtils->buildJsonResponce($data, $error);
-			// mecho 'db data - ';
-			print_r($util);
-			//print_r($_POST);
-			//print_r($error);
-			// echo $_POST['username'];
-			// echo $_POST['password'];
 		} else{
-			 echo 'Method should be POST.';
+			$data = array();
+			$error = array('code' => 001, 'msg' => 'Method should be POST.', 'moreInfo'=> 'Method \''.$_SERVER['REQUEST_METHOD'] . '\' is not allowed to perform this action.');
+			// echo 'Method should be POST.';
 		}
+		$util = Yii::$app->gUtils->buildJsonResponce($data, $error);
+		print_r($util);
 	}
 		
 	public function actions() {
