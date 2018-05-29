@@ -12,6 +12,22 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+			'response' => [
+				'format' => \yii\web\Response::FORMAT_JSON
+		],
+		/*
+		'helpers' => [
+			// use this code block if you add a custome folder with php fnc and use it in any controller
+			// uses - echo Yii::$app->gUtils->getDates(); where gUtils will be component, folder, file and class name
+			'class' => 'app\helpers\globalHelpers',
+        ],
+		*/
+		'gHelpers' => [
+			'class' => 'app\components\helpers\globalHelpers',
+        ],
+		'gUtils' => [
+			'class' => 'app\components\genUtils\genUtils',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'dfsdfsfsfsdf23423423423424324',
